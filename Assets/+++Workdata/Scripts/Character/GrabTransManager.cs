@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class GrabTransManager : MonoBehaviour
 {
-    #region serialized fields
     [SerializeField] List<Transform> grabTrans = new();
-    #endregion
-
-    #region private fields
-
-    #endregion
 
     [ButtonMethod]
     public void GatherChildren()

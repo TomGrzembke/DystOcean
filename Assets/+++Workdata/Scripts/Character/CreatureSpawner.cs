@@ -85,6 +85,8 @@ public class CreatureSpawner : MonoBehaviour
                 }
             }
         }
+        
+        PointSystem.Instance.GetCreatures();
     }
 
     Vector2 GetRandomSpawnPosition(Collider2D spawnableAreaCollider)

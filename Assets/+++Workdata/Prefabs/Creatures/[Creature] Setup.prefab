@@ -87,14 +87,14 @@ MonoBehaviour:
   isPlayer: 0
   <CreatureType>k__BackingField: 0
   targetLayer: -1
-  stunSubject: {fileID: 4478539317960641634}
-  healthSubject: {fileID: 1937458173023117751}
-  speedSubject: {fileID: 7968696186739195705}
-  grabManager: {fileID: 2024252366454839533}
-  applyStatusEffects: {fileID: 1818415738067377841}
-  creatureRewards: {fileID: 7627820772083735243}
-  pointSubject: {fileID: 5676481398085119860}
-  agent: {fileID: 0}
+  <StunSunject>k__BackingField: {fileID: 4478539317960641634}
+  <HealthSubject>k__BackingField: {fileID: 1937458173023117751}
+  <SpeedSubject>k__BackingField: {fileID: 7968696186739195705}
+  <GrabManager>k__BackingField: {fileID: 2024252366454839533}
+  <ApplyStatusEffects>k__BackingField: {fileID: 1818415738067377841}
+  <CreatureRewards>k__BackingField: {fileID: 7627820772083735243}
+  <PointSubject>k__BackingField: {fileID: 5676481398085119860}
+  <Agent>k__BackingField: {fileID: 0}
 --- !u!114 &1818415738067377841
 MonoBehaviour:
   m_ObjectHideFlags: 0

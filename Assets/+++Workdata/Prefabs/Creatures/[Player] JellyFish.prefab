@@ -2026,14 +2026,14 @@ MonoBehaviour:
   isPlayer: 1
   <CreatureType>k__BackingField: 1
   targetLayer: -1
-  stunSubject: {fileID: 6017859251663530628}
-  healthSubject: {fileID: 5646787825360742053}
-  speedSubject: {fileID: 95591704801732508}
-  grabManager: {fileID: 480719721031011748}
-  applyStatusEffects: {fileID: 239935786374924627}
-  creatureRewards: {fileID: 0}
-  pointSubject: {fileID: 0}
-  agent: {fileID: 7845883195136958720}
+  <StunSunject>k__BackingField: {fileID: 6017859251663530628}
+  <HealthSubject>k__BackingField: {fileID: 5646787825360742053}
+  <SpeedSubject>k__BackingField: {fileID: 95591704801732508}
+  <GrabManager>k__BackingField: {fileID: 480719721031011748}
+  <ApplyStatusEffects>k__BackingField: {fileID: 239935786374924627}
+  <CreatureRewards>k__BackingField: {fileID: 0}
+  <PointSubject>k__BackingField: {fileID: 0}
+  <Agent>k__BackingField: {fileID: 7845883195136958720}
 --- !u!114 &239935786374924627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2238,7 +2238,7 @@ MonoBehaviour:
   - {x: 0.3534317, y: -0.77630186, z: 0}
   m_ShapePathHash: 955803133
   m_Mesh: {fileID: 0}
-  m_InstanceId: 594112
+  m_InstanceId: 753634
   m_LocalBounds:
     m_Center: {x: 0.011024475, y: -0.006455183, z: 0}
     m_Extent: {x: 1.1852646, y: 0.7698467, z: 0}
