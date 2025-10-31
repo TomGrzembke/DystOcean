@@ -785,6 +785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 8633589050110306815}
   agent: {fileID: 7845883195136958720}
+  speedSmoothing: 13
 --- !u!114 &501894281744835123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,12 +2005,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedSubject: {fileID: 95591704801732508}
+  stunSubject: {fileID: 6017859251663530628}
   sprintSpeed: 5
-  smoothing: 4
+  rotationSmoothing: 3
+  timeUntilMaximumSpeed: 0.72
   controlState: 0
   isPerformingMove: 0
-  timeUntilMaximumSpeed: 0.72
-  stunSubject: {fileID: 6017859251663530628}
 --- !u!114 &2856363000226415612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2023,9 +2024,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
+  <CreatureType>k__BackingField: 1
   targetLayer: -1
-  creatureType: 1
-  trans: {fileID: 5595682832789274083}
   stunSubject: {fileID: 6017859251663530628}
   healthSubject: {fileID: 5646787825360742053}
   speedSubject: {fileID: 95591704801732508}
@@ -2238,7 +2238,7 @@ MonoBehaviour:
   - {x: 0.3534317, y: -0.77630186, z: 0}
   m_ShapePathHash: 955803133
   m_Mesh: {fileID: 0}
-  m_InstanceId: 136100
+  m_InstanceId: 594112
   m_LocalBounds:
     m_Center: {x: 0.011024475, y: -0.006455183, z: 0}
     m_Extent: {x: 1.1852646, y: 0.7698467, z: 0}

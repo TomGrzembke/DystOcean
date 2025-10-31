@@ -1,13 +1,11 @@
-using MyBox;
 using System;
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class CreatureSpawner : MonoBehaviour
 {
-    [FormerlySerializedAs("spawnOnStart")] public bool spawnOnAwake;
     [SerializeField] private bool randomNumberToSpawn;
 
     [SerializeField, ConditionalField(nameof(randomNumberToSpawn), true)]
@@ -19,23 +17,19 @@ public class CreatureSpawner : MonoBehaviour
     [SerializeField, ConditionalField(nameof(randomNumberToSpawn))]
     float maxNumberToSpawn;
 
-    [Separator][SerializeField] Transform spawnInto;
+    [Separator] [SerializeField] Transform spawnInto;
     [SerializeField] WeightedArray[] creaturesToSpawn;
     [SerializeField] List<GameObject> instantiatedObjects;
 
-    Collider2D _collider;
+
+    [SerializeField] Collider2D spawnZone;
+    [SerializeField, Tag] string playerTag = "Player";
+
+    bool hasSpawned;
 
     void Awake()
     {
-        _collider = GetComponent<Collider2D>();
-
-        if (spawnOnAwake)
-            SpawnRandomCreatures();
-    }
-
-    private void Start()
-    {
-        _collider.isTrigger = true;
+        spawnZone = GetComponent<Collider2D>();
     }
 
     void OnValidate()
@@ -44,6 +38,15 @@ public class CreatureSpawner : MonoBehaviour
         {
             weightedArray.characterName = weightedArray._creatureToSpawn.name;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (hasSpawned) return;
+        if (!other.CompareTag(playerTag)) return;
+
+        hasSpawned = true;
+        SpawnRandomCreatures();
     }
 
     [ButtonMethod]
@@ -72,7 +75,7 @@ public class CreatureSpawner : MonoBehaviour
                 cummChance += weightedArrays._weight;
                 if (rand <= cummChance)
                 {
-                    Vector2 spawnPosition = GetRandomSpawnPosition(_collider);
+                    Vector2 spawnPosition = GetRandomSpawnPosition(spawnZone);
                     GameObject instantiated = Instantiate(weightedArrays._creatureToSpawn, spawnPosition,
                         Quaternion.identity);
                     if (spawnInto != null)
@@ -133,7 +136,7 @@ public class CreatureSpawner : MonoBehaviour
 
     Vector2 GetRandomPointInCollider(Collider2D collider2D)
     {
-        Bounds collBounds = _collider.bounds;
+        Bounds collBounds = spawnZone.bounds;
 
         Vector2 minBounds = new Vector2(collBounds.min.x, collBounds.min.y);
         Vector2 maxBounds = new Vector2(collBounds.max.x, collBounds.max.y);
@@ -153,8 +156,7 @@ public class WeightedArray
     [Tooltip("The Radius in which the creature is spawned x amount away from a wall")]
     public float _radius = 2f;
 
-    [Tooltip("This defines the probability in which a creature is spawned")]
-    [Range(0, 100)]
+    [Tooltip("This defines the probability in which a creature is spawned")] [Range(0, 100)]
     public float _weight = 100f;
 
     [HideInInspector] public string characterName;

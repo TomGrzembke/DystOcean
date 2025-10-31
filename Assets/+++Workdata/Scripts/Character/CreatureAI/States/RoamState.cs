@@ -94,7 +94,7 @@ public class RoamState : State
 
     void LookLogic(StatusManager targetStatusManager)
     {
-        Vector2 targetDirection = (targetStatusManager.Trans.position - transform.position).normalized;
+        Vector2 targetDirection = (targetStatusManager.GetPosition() - transform.position).normalized;
 
         if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.DetectionAngle / 2)
         {

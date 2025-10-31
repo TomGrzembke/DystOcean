@@ -1,18 +1,19 @@
 using MyBox;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class StatusManager : MonoBehaviour
 {
-    #region serialized fields
-    [SerializeField] bool isPlayer;
     public bool IsPlayer => isPlayer;
+    [SerializeField] bool isPlayer;
+
+    [field: SerializeField] public Creatures CreatureType { get; private set; }
+
+
     public Creatures TargetLayer => targetLayer;
     [SerializeField] Creatures targetLayer;
-    public Creatures CreatureType => creatureType;
-    [SerializeField] Creatures creatureType;
-    public Transform Trans => trans;
-    [SerializeField] Transform trans;
+
     public StunSubject StunSunject => stunSubject;
     [SerializeField] StunSubject stunSubject;
     public HealthSubject HealthSubject => healthSubject;
@@ -24,27 +25,23 @@ public class StatusManager : MonoBehaviour
     public ApplyStatusEffects ApplyStatusEffects => applyStatusEffects;
     [SerializeField] ApplyStatusEffects applyStatusEffects;
     public CreatureRewards CreatureRewards => creatureRewards;
-    [SerializeField, ConditionalField(nameof(isPlayer), true)] CreatureRewards creatureRewards;
+
+    [SerializeField, ConditionalField(nameof(isPlayer), true)]
+    CreatureRewards creatureRewards;
+
     public PointSubject PointSubject => pointSubject;
     [SerializeField] PointSubject pointSubject;
 
-    [SerializeField, ConditionalField(nameof(isPlayer))] NavMeshAgent agent;
+    [SerializeField, ConditionalField(nameof(isPlayer))]
+    NavMeshAgent agent;
+
     public NavMeshAgent Agent => agent;
-    #endregion
-
-    #region private fields
-
-    #endregion
-
-    void Awake()
-    {
-        trans = transform;
-    }
 
     public void AddHealth(float additionalHealth)
     {
         healthSubject.AddHealth(additionalHealth);
     }
+
     public void AddDamage(float additionalHealth)
     {
         healthSubject.AddHealth(-additionalHealth);
@@ -64,5 +61,15 @@ public class StatusManager : MonoBehaviour
     public void RemoveSpeedModifier(SpeedModifier speedModifier)
     {
         speedSubject.RemoveSpeedModifier(speedModifier);
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -7,9 +6,12 @@ using UnityEngine.AI;
 public abstract class CreatureLogic : MonoBehaviour
 {
     #region serialized fields
+
     public StatusManager TargetStatusManager => targetStatusManager;
-    [Header("AI Targeting")]
-    [SerializeField] StatusManager targetStatusManager;
+
+    [Header("AI Targeting")] [SerializeField]
+    StatusManager targetStatusManager;
+
     [SerializeField] StatusManager closestStatusTarget;
     public StatusManager ClosestManagerTarget => closestStatusTarget;
     [SerializeField] float closestDistance;
@@ -19,8 +21,8 @@ public abstract class CreatureLogic : MonoBehaviour
     [SerializeField] float distanceFromTarget;
     public float DistanceFromTarget => distanceFromTarget;
 
-    [Header("AI Settings")]
-    [SerializeField] float defaultAgentSpeed = 3.5f;
+    [Header("AI Settings")] [SerializeField]
+    float defaultAgentSpeed = 3.5f;
 
     [SerializeField] float defaultAgentAcceleration = 3.5f;
 
@@ -32,7 +34,7 @@ public abstract class CreatureLogic : MonoBehaviour
     [SerializeField] float rotateFactor = 1;
 
     public float DetectionAngle => detectionAngle;
-    [Range(0, 360)][SerializeField] float detectionAngle = 50f;
+    [Range(0, 360)] [SerializeField] float detectionAngle = 50f;
     public LayerMask ObstacleLayer => obstacleLayer;
     [SerializeField] LayerMask obstacleLayer;
     public LayerMask CreatureLayer => creatureLayer;
@@ -52,6 +54,7 @@ public abstract class CreatureLogic : MonoBehaviour
     SpeedSubject speedSubject;
     [SerializeField] StatusManager statusManager;
     [SerializeField] List<StatusManager> statusTargets = new();
+
     #endregion
 
     void Awake()
@@ -110,6 +113,7 @@ public abstract class CreatureLogic : MonoBehaviour
     }
 
     #region Handle Detection
+
     public void HandleDetection()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, creatureLayer);
@@ -124,7 +128,7 @@ public abstract class CreatureLogic : MonoBehaviour
         {
             if (!colliders[i].TryGetComponent(out StatusManager statusTarget))
                 statusTarget = colliders[i].GetComponentInChildren<StatusManager>();
-            if (!statusTarget) 
+            if (!statusTarget)
                 statusTarget = colliders[i].GetComponentInParent<StatusManager>();
             if (!statusTarget)
                 statusTarget = colliders[i].transform.parent.GetComponentInParent<StatusManager>();
@@ -142,9 +146,11 @@ public abstract class CreatureLogic : MonoBehaviour
             LookLogic(statusTarget);
         }
     }
+
     void LookLogic(StatusManager targetStatusManager)
     {
-        Vector2 targetDirection = (targetStatusManager.Trans.position - transform.position).normalized;
+        Vector2 targetDirection = targetStatusManager.GetPosition() - transform.position;
+        targetDirection = targetDirection.normalized;
 
         if (Vector2.Angle(transform.up, targetDirection) < detectionAngle / 2)
         {
@@ -179,16 +185,22 @@ public abstract class CreatureLogic : MonoBehaviour
             closestStatusTarget = statusTarget;
         }
     }
+
     #endregion
 
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
         Handles.color = Color.green;
-        Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.up, 360, DetectionRadius); //This visualizes the detection radius
+        Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.up, 360,
+            DetectionRadius); //This visualizes the detection radius
 
-        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, -detectionAngle / 2); //This seperates the Angle into two different values
-        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, detectionAngle / 2); //This seperates the Angle into two different values
+        Vector3 viewAngle01 =
+            DirectionFromAngle(transform.eulerAngles.y,
+                -detectionAngle / 2); //This seperates the Angle into two different values
+        Vector3 viewAngle02 =
+            DirectionFromAngle(transform.eulerAngles.y,
+                detectionAngle / 2); //This seperates the Angle into two different values
 
         Gizmos.color = Color.red;
         Gizmos.matrix = transform.localToWorldMatrix;
@@ -205,6 +217,7 @@ public abstract class CreatureLogic : MonoBehaviour
     }
 
     #region Setter
+
     public void SetDistanceFromTarget(float newDistance)
     {
         distanceFromTarget = newDistance;
@@ -230,5 +243,6 @@ public abstract class CreatureLogic : MonoBehaviour
     {
         agent.SetDestination(targetPos);
     }
+
     #endregion
 }

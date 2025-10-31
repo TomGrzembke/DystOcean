@@ -29,7 +29,7 @@ public class ParentSwapper : MonoBehaviour
         obj.parent = tempParent;
 
         if (disablePlayer)
-            playerMovement.SetControlState(PlayerMovement.ControlState.gameControl);
+            playerMovement.SetControlState(PlayerMovement.ControlState.GAME_CONTROL);
     }
 
     public void UnSwap()

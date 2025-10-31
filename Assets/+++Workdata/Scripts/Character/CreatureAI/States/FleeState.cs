@@ -39,7 +39,7 @@ public class FleeState : State
 
         if (creatureLogic.ClosestManagerTarget && agent.velocity.magnitude > 1f)
         {
-            creatureLogic.SetDestination(transform.position + (transform.position - creatureLogic.ClosestManagerTarget.Trans.position));
+            creatureLogic.SetDestination(transform.position + (transform.position - creatureLogic.ClosestManagerTarget.GetPosition()));
         }
         else
         {

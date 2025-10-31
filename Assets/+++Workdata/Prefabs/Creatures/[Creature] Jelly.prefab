@@ -423,6 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 304389486077148952}
   agent: {fileID: 8356465529804277229}
+  speedSmoothing: 5
 --- !u!95 &304389486077148952
 Animator:
   serializedVersion: 5
@@ -2533,7 +2534,15 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: CreatureType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: creatureType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: <CreatureType>k__BackingField
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1206069651293198824, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}

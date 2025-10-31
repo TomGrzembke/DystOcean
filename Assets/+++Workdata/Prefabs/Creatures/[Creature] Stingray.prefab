@@ -2144,7 +2144,15 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: CreatureType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: creatureType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: <CreatureType>k__BackingField
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1206069651293198824, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}

@@ -953,9 +953,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
+  CreatureType: 2
   targetLayer: -1
-  creatureType: 2
-  trans: {fileID: 3469506017646003472}
   stunSubject: {fileID: 1845376770905823759}
   healthSubject: {fileID: 5306533574168344414}
   speedSubject: {fileID: 8914472729547420444}

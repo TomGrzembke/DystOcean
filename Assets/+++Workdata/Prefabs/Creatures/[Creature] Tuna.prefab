@@ -530,6 +530,14 @@ PrefabInstance:
       propertyPath: targetLayer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: <IsPlayer>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: <CreatureType>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1241876678968463969, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: creatureName
       value: Tuna

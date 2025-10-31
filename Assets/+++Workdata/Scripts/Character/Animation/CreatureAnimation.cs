@@ -3,17 +3,17 @@ using UnityEngine.AI;
 
 public class CreatureAnimation : MonoBehaviour
 {
-    #region serialized fields
     [SerializeField] Animator anim;
     [SerializeField] NavMeshAgent agent;
-    #endregion
+    [SerializeField] float speedSmoothing = 5;
 
-    #region private fields
-    #endregion
+    float lastSmoothing;
 
     void Update()
     {
-        anim.SetFloat("speed", agent.velocity.magnitude);
-    }
+        var smoothedValue = Mathf.Lerp(lastSmoothing, agent.velocity.magnitude, Time.deltaTime * speedSmoothing);
 
+        anim.SetFloat("speed", smoothedValue);
+        lastSmoothing = smoothedValue;
+    }
 }

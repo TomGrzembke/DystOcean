@@ -2069,6 +2069,10 @@ PrefabInstance:
       propertyPath: creatureType
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: <CreatureType>k__BackingField
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1161203872786208409, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_IsActive
       value: 0
