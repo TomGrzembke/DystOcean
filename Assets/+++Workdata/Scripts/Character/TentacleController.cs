@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class TentacleController : MonoBehaviour
 {
-    #region serialized fields
     [SerializeField] float detachCheckTime = 3;
     [SerializeField] TentacleTargetManager tentacleTargetManager;
     [SerializeField] PlayerDetect cursorDetect;
     [SerializeField] PlayerDetect playerDetect;
-    #endregion
-
-    #region private fields
+    
     bool targetCursor;
     PlayerInputActions inputActions;
     [SerializeField] List<LimbSubject> savedPossibleTarget;
     Coroutine checkIfStillInRangeCO;
-    #endregion
 
     void Awake()
     {
@@ -25,6 +21,22 @@ public class TentacleController : MonoBehaviour
 
         inputActions.Player.Attack.performed += ctx => Attack();
         inputActions.Player.AutoAttack.performed += ctx => AttackNear();
+    }
+
+    public void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    public void OnDisable()
+    {
+        inputActions.Disable();
+    }
+
+    void OnDestroy()
+    {
+        inputActions.Player.Attack.performed -= ctx => Attack();
+        inputActions.Player.AutoAttack.performed -= ctx => AttackNear();
     }
 
     void Attack()
@@ -53,6 +65,12 @@ public class TentacleController : MonoBehaviour
 
     void AttackNear()
     {
+        if (playerDetect == null)
+        {
+            Debug.Log("Doesnt have: " + nameof(playerDetect) + " in " + name, this);
+            return;
+        }
+        
         if (!playerDetect.HasTargets)
         {
             targetCursor = !targetCursor;
@@ -97,16 +115,5 @@ public class TentacleController : MonoBehaviour
         else
             checkIfStillInRangeCO = StartCoroutine(CheckIfStillInRange());
     }
-
-    #region OnEnable/Disable
-    public void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    public void OnDisable()
-    {
-        inputActions.Disable();
-    }
-    #endregion
+    
 }

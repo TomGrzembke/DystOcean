@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TentacleTargetManager : MonoBehaviour
 {
-    #region serialized fields
     [SerializeField] List<TentacleBehavior> tentacles;
     [SerializeField] List<LimbSubject> targetLimbs;
     [SerializeField] List<Transform> targetTrans;
@@ -14,12 +13,10 @@ public class TentacleTargetManager : MonoBehaviour
     public List<StatusManager> TargetStatusManagers => targetStatusManagers;
     [SerializeField] List<StatusManager> targetStatusManagers;
     public event Action<List<StatusManager>> OnTargetStatusManagersChanged;
-    #endregion
 
-    #region private fields
+
     List<StatusManager> oldTargetStatusManagers;
 
-    #endregion
 
     public void SetTargets()
     {
@@ -35,6 +32,7 @@ public class TentacleTargetManager : MonoBehaviour
                 targetTrans.Clear();
                 ResetTentacles();
                 break;
+            
             case 1:
                 if (tentacleMaterial)
                     tentacleMaterial.color = attackColor;
@@ -43,6 +41,7 @@ public class TentacleTargetManager : MonoBehaviour
                     AddTargetTrans(targetLimbs[0].OwnStatusManager.GrabManager.GetRandomGrabTrans());
                 }
                 break;
+            
             default:
                 if (tentacleMaterial)
                     tentacleMaterial.color = attackColor;

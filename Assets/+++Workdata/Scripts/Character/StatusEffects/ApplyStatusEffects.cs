@@ -3,16 +3,11 @@ using UnityEngine;
 
 public class ApplyStatusEffects : MonoBehaviour
 {
-    #region serialized fields
     [SerializeField] bool player;
     [SerializeField] StunEffectCondition stunEffectCondition;
-    #endregion
 
-    #region private fields
-
-    #endregion
-
-    public void ApplyEffects(StatusEffects _statusEffects, StatusManager targetStatusManager, LimbSubject limbSubject = null, StatusManager ownStatusManager = null)
+    public void ApplyEffects(StatusEffects _statusEffects, StatusManager targetStatusManager,
+        LimbSubject limbSubject = null, StatusManager ownStatusManager = null)
     {
         if (targetStatusManager == ownStatusManager) return;
         if (!targetStatusManager) return;
@@ -27,12 +22,17 @@ public class ApplyStatusEffects : MonoBehaviour
 
         if (_statusEffects.stunPerInstance != 0)
         {
-            if (targetStatusManager != null)
+            if (targetStatusManager != null) 
                 if (_statusEffects.stunPerInstance > 0)
                     if (stunEffectCondition != null)
+                    {
                         targetStatusManager.AddStun(_statusEffects.stunPerInstance * stunEffectCondition.Calc_percentageDebuff);
+                    }
                     else
+                    {
                         targetStatusManager.AddStun(_statusEffects.stunPerInstance);
+                    }
+
             hasDoneSmth = true;
         }
 
@@ -45,12 +45,17 @@ public class ApplyStatusEffects : MonoBehaviour
         if (!hasDoneSmth) return;
 
         if (player)
+        {
             CombatManager.Instance.CreatureInteraction(targetStatusManager);
+        }
         else if (targetStatusManager.IsPlayer)
+        {
             CombatManager.Instance.CreatureInteraction(ownStatusManager);
+        }
     }
 
-    public void ApplyEffects(StatusEffects _statusEffects, LimbSubject limbSubject, StatusManager ownStatusManager = null)
+    public void ApplyEffects(StatusEffects _statusEffects, LimbSubject limbSubject,
+        StatusManager ownStatusManager = null)
     {
         ApplyEffects(_statusEffects, limbSubject.OwnStatusManager, limbSubject, ownStatusManager);
     }
@@ -60,7 +65,6 @@ public class ApplyStatusEffects : MonoBehaviour
         if (speedModifier)
             targetStatusManager.RemoveSpeedModifier(speedModifier);
     }
-
 }
 
 [Serializable]

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerDetect : MonoBehaviour
 {
-    #region serialized fields
     [SerializeField] Transform middle;
     public List<LimbSubject> PossibleTargets => possibleTargets;
     [SerializeField] List<LimbSubject> possibleTargets = new();
@@ -13,11 +12,6 @@ public class PlayerDetect : MonoBehaviour
     [SerializeField] LayerMask creatureLayer;
     [SerializeField] float detectionRadius;
     [SerializeField] StatusManager playerStatusManager;
-    #endregion
-
-    #region private fields
-
-    #endregion
 
     void Update()
     {

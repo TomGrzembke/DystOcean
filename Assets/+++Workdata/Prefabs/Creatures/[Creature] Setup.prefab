@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  CreatureType: 2
+  <CreatureType>k__BackingField: 0
   targetLayer: -1
   stunSubject: {fileID: 4478539317960641634}
   healthSubject: {fileID: 1937458173023117751}

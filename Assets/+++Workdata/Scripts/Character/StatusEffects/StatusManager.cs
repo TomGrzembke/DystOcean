@@ -1,7 +1,6 @@
 using MyBox;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 public class StatusManager : MonoBehaviour
 {
@@ -9,11 +8,10 @@ public class StatusManager : MonoBehaviour
     [SerializeField] bool isPlayer;
 
     [field: SerializeField] public Creatures CreatureType { get; private set; }
-
-
     public Creatures TargetLayer => targetLayer;
     [SerializeField] Creatures targetLayer;
 
+    
     public StunSubject StunSunject => stunSubject;
     [SerializeField] StunSubject stunSubject;
     public HealthSubject HealthSubject => healthSubject;
@@ -31,10 +29,9 @@ public class StatusManager : MonoBehaviour
 
     public PointSubject PointSubject => pointSubject;
     [SerializeField] PointSubject pointSubject;
-
+    
     [SerializeField, ConditionalField(nameof(isPlayer))]
     NavMeshAgent agent;
-
     public NavMeshAgent Agent => agent;
 
     public void AddHealth(float additionalHealth)

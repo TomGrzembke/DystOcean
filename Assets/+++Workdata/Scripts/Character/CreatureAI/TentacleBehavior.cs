@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class TentacleBehavior : MonoBehaviour
 {
-    #region enums
     enum PointFollowMode
     {
         overlap,
@@ -15,9 +14,7 @@ public class TentacleBehavior : MonoBehaviour
         dontWiggle,
         wiggle
     }
-    #endregion
-
-    #region serialized fields
+    
     [Foldout("TailCustomization", true)]
     [SerializeField] float grabSpeed = 60;
     [SerializeField] Transform tailEnd;
@@ -48,9 +45,7 @@ public class TentacleBehavior : MonoBehaviour
     float mod_wiggleMagnitude = 20;
     [ConditionalField(nameof(wiggleMode), false, WiggleMode.wiggle), SerializeField] float wiggleMagnitude = 20;
     [ConditionalField(nameof(wiggleMode), false, WiggleMode.wiggle), SerializeField] Transform wiggleDir;
-    #endregion
-
-    #region private fields
+    
     float calc_vertexDistance;
     float calc_smoothSpeed;
     /// <summary> Used for Stack length</summary>
@@ -62,7 +57,7 @@ public class TentacleBehavior : MonoBehaviour
     Vector3 targetPos;
     Transform defaultGrabTrans;
     public Transform DefaultGrabTrans => defaultGrabTrans;
-    #endregion
+
     void Awake() => lineRend = GetComponent<LineRenderer>();
 
     void Start()
@@ -88,8 +83,7 @@ public class TentacleBehavior : MonoBehaviour
         startPositions[1] = attachTrans.position + Vector3.down;
         lineRend.SetPositions(startPositions);
     }
-
-    #region recalculate/normalize values
+    
     void Recalculate()
     {
         calc_vertexDistance = vertexDistance / 10;
@@ -108,8 +102,6 @@ public class TentacleBehavior : MonoBehaviour
 
         }
     }
-
-    #endregion
 
     void StartSettings()
     {

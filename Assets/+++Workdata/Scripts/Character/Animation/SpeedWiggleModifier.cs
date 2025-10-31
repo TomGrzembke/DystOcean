@@ -3,12 +3,9 @@ using UnityEngine.AI;
 
 public class SpeedWiggleModifier : MonoBehaviour
 {
-
-    #region serialized fields
     [SerializeField] NavMeshAgent agent;
     [SerializeField] TentacleBehavior[] tentacleBehaviorsToModify;
     [SerializeField] float dividedBy = 10;
-    #endregion
 
     void Update()
     {
