@@ -309,8 +309,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0076003075, y: 0.015350342, z: 0}
-    m_Extent: {x: 11.191299, y: 10.83735, z: 0}
+    m_Center: {x: 0.004149914, y: 0.011449814, z: 0}
+    m_Extent: {x: 11.190451, y: 10.83815, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -613,6 +613,7 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_Damping: 5
   m_MaxWindowSize: -1
+  m_Padding: 0
 --- !u!1 &2864279337485161611
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +761,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 1820505443, guid: b58b23e17e223994798068a037997212, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8666667}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2237,7 +2238,7 @@ MonoBehaviour:
   - {x: 0.3534317, y: -0.77630186, z: 0}
   m_ShapePathHash: 955803133
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1333208
+  m_InstanceId: 136100
   m_LocalBounds:
     m_Center: {x: 0.011024475, y: -0.006455183, z: 0}
     m_Extent: {x: 1.1852646, y: 0.7698467, z: 0}
